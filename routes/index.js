@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 
 var grabzit = require('grabzit');
 var client = new grabzit(process.env.GRABZIT_KEY, process.env.GRABZIT_SECRET);
@@ -12,7 +13,7 @@ router.get('/cap/:name/:pt/', function(req, res) {
   client.save_to(path);
 
   var tick = function(){
-    if(fs.exist(path)){
+    if(fs.existsSync(path)){
       res.send(path);
       res.end();
     } else {
@@ -26,7 +27,7 @@ router.get('/cap/:name/:pt/', function(req, res) {
 });
 
 router.get('/create/:name/:pt/', function(req, res){
-  res.send('<div style="font-size:'+req.params.pt+'pt;">'+req.params.name+'</div>');
+  res.send('<!DOCTYPE html><html><head></head><body><div style="font-size:'+req.params.pt+'pt;">'+req.params.name+'</div></body></html>');
   res.end();
 });
 
