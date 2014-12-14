@@ -57,7 +57,7 @@ router.get('/create/:width/:height/:name/', function(req, res){
                 'overflow': 'hidden',
                 'font-family': 'Hiragino Kaku Gothic Pro'
                })
-               .extend(req.params, {
+               .extend(req.params, req.query, {
                 name: '',
                 width: '100%'
                })
