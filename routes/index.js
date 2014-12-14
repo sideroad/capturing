@@ -25,13 +25,13 @@ router.get('/cap/:width/:height/:name', function(req, res) {
           height: height
         });
         console.log(filepath);
-        page.render('/app/'+filepath, function(){
+        page.render('/app/'+filepath, {format: extname.substr(1)}, function(){
           console.log(filepath);
           res.sendFile(filepath, {
             root: '/app/'
           });
           console.log(filepath);
-        }, {format: extname.substr(1)});
+        });
       });
     });
   });
