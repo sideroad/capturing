@@ -5,12 +5,14 @@ var _ = require('lodash');
 var querystring = require('querystring');
 var path = require('path');
 
-router.get('/cap/:name/:width/:height/', function(req, res) {
+router.get('/cap/:width/:height/:name', function(req, res) {
   var name = req.params.name,
       width = req.params.width,
       height = req.params.height,
       phantom = require('phantom'),
-      filepath = "public/images/"+width+"-"+height+".png";
+      extname = path.extname(name),
+      basename = path.basename(name, extname),
+      filepath = "public/images/"+basename+width+"-"+height+extname;
       // filepath = "public/images/"+name+"-"+width+"-"+height+".png";
 
 
@@ -21,7 +23,6 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
-        fs.writeFileSync('/app/public/images/aaa.txt', 'aaa', 'utf-8');
         console.log(filepath);
         page.render('/app/'+filepath, function(){
           console.log(filepath);
