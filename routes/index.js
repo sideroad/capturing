@@ -21,8 +21,8 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           height: height
         });
         page.render('/app/'+filepath, function(){
-          res.sendFile(filepath, {
-            root: '/app/',
+          res.sendFile('/app/'+filepath, {
+            root: '/app/'
           });
         });
       });
