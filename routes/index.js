@@ -20,12 +20,14 @@ router.get('/cap/:width/:height/:name', function(req, res) {
       extname = path.extname(name),
       basename = path.basename(name, extname),
       md5 = crypto.createHash('md5'),
+      filename,
       filepath,
       minpath;
 
   md5.update(basename+'-'+width+'-'+height+'-'+querystring.stringify(req.query));
-  filepath = "public/images/"+md5.digest('hex')+extname;
-  minpath = "public/images/"+md5.digest('hex')+'.min'+extname;
+  filename = md5.digest('hex');
+  filepath = "public/images/"+filename+extname;
+  minpath = "public/images/"+filename+'.min'+extname;
 
   console.log(filepath);
   if(fs.existsSync('/app/'+filepath)){
