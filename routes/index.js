@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var phantom = require('phantom');
 var _ = require('lodash');
 var querystring = require('querystring');
 
