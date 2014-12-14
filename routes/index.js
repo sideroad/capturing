@@ -14,8 +14,7 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
 
   phantom.create(function (ph) {
     ph.createPage(function (page) {
-      page.open("http://localhost:3000/create/"+encodeURIComponent(name)+"/"+width+"/"+height+"?"+querystring.stringify(req.query), function (status) {
-      // page.open("http://capturing.herokuapp.com/create/"+encodeURIComponent(name)+"/?"+req.query, function (status) {
+      page.open("http://capturing.herokuapp.com/create/"+encodeURIComponent(name)+"/"+width+"/"+height+"?"+querystring.stringify(req.query), function (status) {
         page.set('viewportSize', {
           width: width,
           height: height
@@ -24,7 +23,6 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           res.sendFile(path, {
             root: __dirname + '/../',
           });
-          // res.end();
         });
       });
     });
