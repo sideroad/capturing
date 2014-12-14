@@ -5,7 +5,7 @@ var _ = require('lodash');
 var querystring = require('querystring');
 var path = require('path');
 var crypto = require('crypto');
-var files = require("glob").globSync('/app/public/images/*');
+var files = require("glob").sync('/app/public/images/*');
 
 files.forEach(function(file){
   console.log(file);
