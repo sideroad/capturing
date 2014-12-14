@@ -31,7 +31,6 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
 });
 
 router.get('/create/:name/:width/:height/', function(req, res){
-
   var style = _.chain({
                 'text-overflow': 'ellipsis',
                 'white-space': 'nowrap',
