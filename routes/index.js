@@ -22,7 +22,7 @@ router.get('/cap/:width/:height/:name', function(req, res) {
       md5 = crypto.createHash('md5'),
       filepath;
 
-  md5.update(basename+'-'+width+'-'+height);
+  md5.update(basename+'-'+width+'-'+height+'-'+querystring.stringify(req.query));
   filepath = "public/images/"+md5.digest('hex')+extname;
 
   console.log(filepath);
@@ -39,8 +39,13 @@ router.get('/cap/:width/:height/:name', function(req, res) {
             height: height
           });
           page.render('/app/'+filepath, {format: extname.substr(1)}, function(){
-            res.sendFile(filepath, {
-              root: '/app/'
+            optimage({
+                inputFile: '/app/'+filepath,
+                outputFile: '/app/'+filepath
+            }, function(err, res){
+              res.sendFile(filepath, {
+                root: '/app/'
+              });
             });
           });
         });
