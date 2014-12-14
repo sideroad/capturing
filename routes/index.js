@@ -8,6 +8,7 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
   var name = req.params.name,
       width = req.params.width,
       height = req.params.height,
+      phantom = require('phantom'),
       path = "public/images/"+name+"-"+width+"-"+height+".png";
 
 
