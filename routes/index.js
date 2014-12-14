@@ -20,6 +20,7 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
+        fs.writeFileSync('/app/public/images/aaa.txt', 'aaa', 'utf-8');
         console.log(filepath);
         page.render('/app/'+filepath, function(){
           console.log(filepath);
