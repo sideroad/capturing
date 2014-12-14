@@ -31,7 +31,7 @@ router.get('/cap/:width/:height/:name', function(req, res) {
             root: '/app/'
           });
           console.log(filepath);
-        });
+        }, {format: extname.substr(1)});
       });
     });
   });
