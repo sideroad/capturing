@@ -31,8 +31,8 @@ router.get('/cap/:width/:height/:name', function(req, res) {
   minpath = "public/images/"+filename+'.min'+extname;
 
   console.log(filepath);
-  if(fs.existsSync('/app/'+filepath)){
-    res.sendFile(filepath, {
+  if(fs.existsSync('/app/'+minpath)){
+    res.sendFile(minpath, {
       root: '/app/'
     });
   } else {
