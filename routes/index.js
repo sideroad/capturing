@@ -3,13 +3,14 @@ var router = express.Router();
 var fs = require('fs');
 var _ = require('lodash');
 var querystring = require('querystring');
+var path = require('path');
 
 router.get('/cap/:name/:width/:height/', function(req, res) {
   var name = req.params.name,
       width = req.params.width,
       height = req.params.height,
       phantom = require('phantom'),
-      path = "public/images/"+name+"-"+width+"-"+height+".png";
+      filepath = "images/"+name+"-"+width+"-"+height+".png";
 
 
   phantom.create(function (ph) {
@@ -19,9 +20,9 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
-        page.render(path, function(){
+        page.render(path.join(__dirname, '../public', filepath), function(){
           res.sendFile(path, {
-            root: __dirname,
+            root: path.join(__dirname, '../public', filepath),
           });
         });
       });
