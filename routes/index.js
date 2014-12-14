@@ -6,6 +6,7 @@ var querystring = require('querystring');
 var path = require('path');
 var crypto = require('crypto');
 var files = require("glob").sync('/app/public/images/*');
+var optimage = require('optimage');
 
 files.forEach(function(file){
   console.log(file);
