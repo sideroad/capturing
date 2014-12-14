@@ -20,6 +20,7 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
+        console.log(path.join(__dirname, '../public', filepath));
         page.render(path.join(__dirname, '../public', filepath), function(){
           res.sendFile(path, {
             root: path.join(__dirname, '../public', filepath),
