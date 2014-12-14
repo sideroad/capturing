@@ -47,7 +47,7 @@ router.get('/cap/:width/:height/:name', function(req, res) {
             optimage({
                 inputFile: '/app/'+filepath,
                 outputFile: '/app/'+minpath
-            }, function(err, res){
+            }, function(err){
               res.sendFile(minpath, {
                 root: '/app/'
               });
