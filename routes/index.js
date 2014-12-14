@@ -59,7 +59,8 @@ router.get('/create/:width/:height/:name/', function(req, res){
                })
                .extend(req.params, req.query, {
                 name: '',
-                width: '100%'
+                width: '100%',
+                height: req.params.height+'px'
                })
                .map(function(val, key){
                 return val ? key+': '+val : '';
