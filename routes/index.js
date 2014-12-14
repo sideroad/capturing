@@ -8,6 +8,7 @@ var crypto = require('crypto');
 var files = require("glob").globSync('/app/public/images/*');
 
 files.forEach(function(file){
+  console.log(file);
   fs.unlink(file);
 });
 
