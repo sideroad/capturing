@@ -21,7 +21,7 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
         });
         page.render(path, function(){
           res.sendFile(path, {
-            root: __dirname + '/../',
+            root: __dirname,
           });
         });
       });
