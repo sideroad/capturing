@@ -10,7 +10,7 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
       width = req.params.width,
       height = req.params.height,
       phantom = require('phantom'),
-      filepath = "images/"+name+"-"+width+"-"+height+".png";
+      filepath = "public/images/"+name+"-"+width+"-"+height+".png";
 
 
   phantom.create(function (ph) {
@@ -20,10 +20,9 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
-        console.log(path.join(__dirname, '../public', filepath));
-        page.render(path.join(__dirname, '../public', filepath), function(){
+        page.render(path.join('/app/', filepath), function(){
           res.sendFile(path, {
-            root: path.join(__dirname, '../public', filepath),
+            root: '/app/',
           });
         });
       });
