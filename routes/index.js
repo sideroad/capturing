@@ -10,7 +10,8 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
       width = req.params.width,
       height = req.params.height,
       phantom = require('phantom'),
-      filepath = "public/images/"+name+"-"+width+"-"+height+".png";
+      filepath = "public/images/"+width+"-"+height+".png";
+      // filepath = "public/images/"+name+"-"+width+"-"+height+".png";
 
 
   phantom.create(function (ph) {
