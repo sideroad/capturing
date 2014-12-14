@@ -27,7 +27,7 @@ router.get('/cap/:width/:height/:name', function(req, res) {
   } else {
     phantom.create(function (ph) {
       ph.createPage(function (page) {
-        page.open("http://capturing.herokuapp.com/create/"+encodeURIComponent(name)+"/"+width+"/"+height+"?"+querystring.stringify(req.query), function (status) {
+        page.open("http://capturing.herokuapp.com/create/"+encodeURIComponent(basename)+"/"+width+"/"+height+"?"+querystring.stringify(req.query), function (status) {
           page.set('viewportSize', {
             width: width,
             height: height
