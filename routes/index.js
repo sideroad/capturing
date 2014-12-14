@@ -12,7 +12,8 @@ router.get('/cap/:width/:height/:name', function(req, res) {
       phantom = require('phantom'),
       extname = path.extname(name),
       basename = path.basename(name, extname),
-      filepath = "public/images/"+basename+width+"-"+height+extname;
+
+      filepath = "public/images/"+width+"-"+height+extname;
       // filepath = "public/images/"+name+"-"+width+"-"+height+".png";
 
 
