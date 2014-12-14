@@ -20,10 +20,12 @@ router.get('/cap/:width/:height/:name', function(req, res) {
       extname = path.extname(name),
       basename = path.basename(name, extname),
       md5 = crypto.createHash('md5'),
-      filepath;
+      filepath,
+      minpath;
 
   md5.update(basename+'-'+width+'-'+height+'-'+querystring.stringify(req.query));
   filepath = "public/images/"+md5.digest('hex')+extname;
+  minpath = "public/images/"+md5.digest('hex')+'.min'+extname;
 
   console.log(filepath);
   if(fs.existsSync('/app/'+filepath)){
@@ -41,9 +43,9 @@ router.get('/cap/:width/:height/:name', function(req, res) {
           page.render('/app/'+filepath, {format: extname.substr(1)}, function(){
             optimage({
                 inputFile: '/app/'+filepath,
-                outputFile: '/app/'+filepath
+                outputFile: '/app/'+minpath
             }, function(err, res){
-              res.sendFile(filepath, {
+              res.sendFile(minpath, {
                 root: '/app/'
               });
             });
