@@ -20,8 +20,8 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
-        page.render(path.join('/app/', filepath), function(){
-          res.sendFile(path, {
+        page.render('/app/'+filepath, function(){
+          res.sendFile(filepath, {
             root: '/app/',
           });
         });
