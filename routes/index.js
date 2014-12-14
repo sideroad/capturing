@@ -20,10 +20,13 @@ router.get('/cap/:name/:width/:height/', function(req, res) {
           width: width,
           height: height
         });
+        console.log(filepath);
         page.render('/app/'+filepath, function(){
+          console.log(filepath);
           res.sendFile(filepath, {
             root: '/app/'
           });
+          console.log(filepath);
         });
       });
     });
