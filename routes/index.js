@@ -38,11 +38,11 @@ router.get('/cap/:width/:height/:name', function(req, res) {
   } else {
     phantom.create(function (ph) {
       ph.createPage(function (page) {
+        page.set('viewportSize', {
+          width: width,
+          height: height
+        });
         page.open("http://capturing.herokuapp.com/create/"+width+"/"+height+"/"+encodeURIComponent(basename)+"/?"+querystring.stringify(req.query), function (status) {
-          page.set('viewportSize', {
-            width: width,
-            height: height
-          });
           page.render('/app/'+filepath, {format: extname.substr(1)}, function(){
             optimage({
                 inputFile: '/app/'+filepath,
